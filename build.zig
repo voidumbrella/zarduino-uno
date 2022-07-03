@@ -13,6 +13,7 @@ pub fn build(b: *std.build.Builder) !void {
     inline for (.{
         "blink",
         "serial",
+        "button",
     }) |demo| {
         const demo_exe = b.addExecutable(demo, "demo/" ++ demo ++ ".zig");
         demo_exe.setTarget(target);
