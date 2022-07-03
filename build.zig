@@ -14,6 +14,7 @@ pub fn build(b: *std.build.Builder) !void {
         "blink",
         "serial",
         "button",
+        "playground",
     }) |demo| {
         const demo_exe = b.addExecutable(demo, "demo/" ++ demo ++ ".zig");
         demo_exe.setTarget(target);

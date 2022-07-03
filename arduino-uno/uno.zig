@@ -2,6 +2,7 @@ pub const atmega328p = @import("atmega328p.zig");
 pub const usart = @import("usart.zig");
 
 pub const CPU_FREQ = 16000000;
+
 comptime {
     asm (
         \\.vectors:
@@ -33,6 +34,7 @@ comptime {
         \\  jmp _unhandled_interrupt    ;
     );
 }
+
 export fn _unhandled_interrupt() callconv(.Naked) noreturn {
     @panic("unhandled interrupt");
 }
@@ -83,10 +85,7 @@ export fn _start() callconv(.Naked) noreturn {
         \\ ldi r24, 0xFF
         \\ out 0x3D, r24
         \\
-        \\ ;;; Enable interrupts?
-        \\ ; sei
-        \\
-        \\.main:
+        \\main:
         ::: "memory", "r16", "r24", "r25", "r26", "r27", "r30", "r31");
 
     @import("root").main();

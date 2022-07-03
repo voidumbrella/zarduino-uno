@@ -9,7 +9,7 @@ SECTIONS
     .text :
     {
         KEEP (*(.vectors .vectors.*))
-        *(.text.*)
+        *(.text .text.*)
     } > flash
     .data :
     {
